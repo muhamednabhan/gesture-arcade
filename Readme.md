@@ -6,14 +6,14 @@ A browser-based retro arcade featuring four interactive games controlled through
 
 Built using vanilla HTML, CSS and JavaScript, with no frameworks or build process required.
 
-## Preview
+Preview
 
 <p align="center">
-  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result.png" width="100%" alt="Neon Arcade Preview">
+  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/neon-arcade/assets/result.png" width="100%" alt="Neon Arcade Preview">
 </p>
 
 <p align="center">
-  <img src="[https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result2.png](https://github.com/muhamednabhan/gesture-arcade/blob/main/neon-arcade/assets/result.png)" width="100%" alt="Neon Arcade Gameplay">
+  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/neon-arcade/assets/result2.png" width="100%" alt="Neon Arcade Gameplay">
 </p>
 
 ## Games
