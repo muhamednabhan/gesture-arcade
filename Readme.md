@@ -1,14 +1,22 @@
 # Neon Arcade
 
+### [▶ PLAY LIVE — https://gesturearcade.netlify.app/](https://gesturearcade.netlify.app/)
+
 A browser-based retro arcade featuring four interactive games controlled through webcam-based hand and face tracking, with keyboard and mouse controls as alternatives.
 
-Built using vanilla HTML, CSS and JavaScript, the project runs directly in the browser without frameworks or a build process.
+Built using vanilla HTML, CSS and JavaScript, with no frameworks or build process required.
 
 ## Preview
 
-![Neon Arcade Preview](assets/result.png)
+<p align="center">
+  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result.png" width="100%" alt="Neon Arcade Preview">
+</p>
 
-![Neon Arcade Gameplay](assets/result2.png)
+<p align="center">
+  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result2.png" width="100%" alt="Neon Arcade Gameplay">
+</p>
+
+## Games
 
 ## Games
 
