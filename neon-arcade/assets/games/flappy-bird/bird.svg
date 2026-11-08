@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100">
+<defs>
+ <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8a2"/><stop offset=".5" stop-color="#ffb52c"/><stop offset="1" stop-color="#ff4e7a"/></linearGradient>
+ <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#25eaff"/><stop offset="1" stop-color="#7a3cff"/></linearGradient>
+ <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<style>
+ .bob{animation:bob 1.6s ease-in-out infinite;transform-origin:60px 50px}
+ .wing{animation:flap .42s ease-in-out infinite alternate;transform-origin:48px 54px}
+ .lid{animation:blink 3.2s infinite;transform-origin:78px 40px}
+ @keyframes bob{50%{transform:translateY(-6px) rotate(-3deg)}}
+ @keyframes flap{from{transform:rotate(18deg)}to{transform:rotate(-26deg)}}
+ @keyframes blink{0%,90%,100%{transform:scaleY(0)}94%,97%{transform:scaleY(1)}}
+ @media (prefers-reduced-motion:reduce){.bob,.wing,.lid{animation:none}}
+</style>
+<g class="bob" filter="url(#glow)">
+ <ellipse cx="58" cy="52" rx="34" ry="28" fill="url(#body)" stroke="#fff3c4" stroke-width="2"/>
+ <path d="M89 46 L112 54 L90 62 Z" fill="#ff3ca6" stroke="#ffd0ec" stroke-width="1.5" stroke-linejoin="round"/>
+ <g class="wing"><path d="M52 52 C30 40 14 52 18 70 C34 74 50 68 56 58 Z" fill="url(#wing)" stroke="#bff8ff" stroke-width="2" stroke-linejoin="round"/></g>
+ <circle cx="78" cy="40" r="9" fill="#fff"/>
+ <circle cx="81" cy="40" r="4.2" fill="#12062a"/>
+ <circle cx="82.6" cy="38.4" r="1.4" fill="#fff"/>
+ <ellipse class="lid" cx="78" cy="40" rx="9.4" ry="9.4" fill="#ffb52c"/>
+</g>
+</svg>

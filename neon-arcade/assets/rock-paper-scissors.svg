@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330">
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#091638"/><stop offset="1" stop-color="#160b32"/></linearGradient>
+ <linearGradient id="hand" x2="0" y2="1"><stop stop-color="#f7f4ff"/><stop offset=".5" stop-color="#c9c4ff"/><stop offset="1" stop-color="#7775c9"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="8" y="8" width="344" height="314" rx="14" fill="url(#bg)" stroke="#caff32" stroke-width="3"/>
+<g opacity=".35" stroke="#6e62c7"><path d="M20 55H340M20 95H340M20 135H340M20 175H340M20 215H340M20 255H340"/><path d="M55 20V280M105 20V280M155 20V280M205 20V280M255 20V280M305 20V280"/></g>
+<circle cx="180" cy="151" r="92" fill="none" stroke="#caff32" stroke-width="2" stroke-dasharray="4 8" opacity=".5"/>
+<circle cx="180" cy="151" r="72" fill="#172347" stroke="#28f5ff" stroke-width="2" opacity=".8"/>
+<text x="180" y="159" text-anchor="middle" fill="#ff45d1" font-family="monospace" font-size="27" font-weight="bold" filter="url(#glow)">VS</text>
+<!-- rock fist -->
+<g transform="translate(48 65) rotate(-9 55 70)" fill="url(#hand)" stroke="#b6faff" stroke-width="2.5" filter="url(#glow)">
+ <path d="M20 83Q9 75 15 61L21 45Q25 37 33 42L37 22Q40 13 48 17Q55 18 54 28L53 42L58 19Q61 10 69 14Q76 17 73 27L69 44L77 28Q82 20 89 25Q95 29 91 38L83 56Q101 54 104 68L100 95Q95 116 77 122L42 119Q25 113 20 98Z"/>
+ <path d="M21 65L46 74L71 72L88 61" fill="none" stroke="#7775c9" stroke-width="3"/>
+</g>
+<!-- paper hand -->
+<g transform="translate(217 52) rotate(8 42 75)" fill="url(#hand)" stroke="#b6faff" stroke-width="2.5" filter="url(#glow)">
+ <path d="M15 92L15 19Q15 10 23 10Q31 10 31 19L31 61L35 9Q36 1 44 2Q52 3 51 12L48 61L55 17Q57 9 64 11Q72 13 69 22L63 65L72 33Q75 25 82 28Q90 30 86 40L77 83Q74 106 59 120L35 125Q16 118 15 92Z"/>
+ <path d="M31 61L48 61M48 61L63 65" fill="none" stroke="#7775c9" stroke-width="3"/>
+</g>
+<!-- scissors icon -->
+<g transform="translate(123 198)" stroke="#ff4bd5" stroke-width="7" stroke-linecap="round" fill="none" filter="url(#glow)">
+ <circle cx="7" cy="22" r="10"/><circle cx="34" cy="22" r="10"/><path d="M14 15L67 -15M27 15L67 39"/>
+</g>
+<g fill="#caff32" filter="url(#glow)"><path d="M61 33l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/><path d="M302 207l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/></g>
+<rect x="20" y="287" width="320" height="24" rx="4" fill="#090d25" opacity=".95" stroke="#caff32"/>
+<text x="180" y="303" text-anchor="middle" fill="#eaffc7" font-family="monospace" font-size="10" letter-spacing="2">CHOOSE YOUR MOVE</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330">
+<defs>
+ <radialGradient id="bg"><stop stop-color="#341047"/><stop offset="1" stop-color="#080d2a"/></radialGradient>
+ <linearGradient id="red" x2="1" y2="1"><stop stop-color="#ffb6b8"/><stop offset=".3" stop-color="#ff315d"/><stop offset="1" stop-color="#8e063f"/></linearGradient>
+ <linearGradient id="lime" x2="1" y2="1"><stop stop-color="#f2ff8d"/><stop offset=".4" stop-color="#8cff34"/><stop offset="1" stop-color="#159c55"/></linearGradient>
+ <linearGradient id="orange" x2="1" y2="1"><stop stop-color="#fff2a0"/><stop offset=".4" stop-color="#ff9c27"/><stop offset="1" stop-color="#f23842"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="8" y="8" width="344" height="314" rx="14" fill="url(#bg)" stroke="#ff43c5" stroke-width="3"/>
+<g opacity=".5" stroke="#8d35ff"><path d="M25 70H335M25 108H335M25 146H335M25 184H335M25 222H335M25 260H335"/><path d="M60 25V300M110 25V300M160 25V300M210 25V300M260 25V300M310 25V300"/></g>
+<g filter="url(#glow)" stroke-width="3">
+ <!-- apple -->
+ <path d="M93 120C62 94 35 123 48 160C61 198 87 216 106 192C129 219 154 193 165 160C178 124 140 97 112 121C106 113 101 113 93 120Z" fill="url(#red)" stroke="#ff9acb"/>
+ <path d="M106 119Q102 99 117 86" fill="none" stroke="#a8ff4a" stroke-width="7" stroke-linecap="round"/><path d="M112 99Q137 78 147 97Q128 110 112 99Z" fill="#9cff3a" stroke="#d8ff9e"/>
+ <!-- lime -->
+ <circle cx="237" cy="133" r="43" fill="url(#lime)" stroke="#d8ff8e"/>
+ <path d="M237 90Q225 132 237 176M194 133H280M207 103L266 163M266 103L207 163" stroke="#1d8f56" stroke-width="2" opacity=".7"/>
+ <circle cx="237" cy="133" r="6" fill="#eaff9a"/>
+ <!-- orange -->
+ <circle cx="176" cy="207" r="36" fill="url(#orange)" stroke="#ffdf8c"/>
+ <path d="M176 171Q164 205 176 243M140 207H212" stroke="#d83c37" stroke-width="2" opacity=".7"/>
+</g>
+<!-- blade slash -->
+<path d="M38 270L282 55" stroke="#ff3acb" stroke-width="16" opacity=".18" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M38 270L282 55" stroke="#28f8ff" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+<path d="M55 272L298 58" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
+<g fill="#caff32" filter="url(#glow)"><path d="M65 87l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/><path d="M294 180l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/><circle cx="63" cy="226" r="3"/><circle cx="302" cy="96" r="3"/></g>
+<rect x="20" y="287" width="320" height="24" rx="4" fill="#10071f" opacity=".94" stroke="#ff43c5"/>
+<text x="180" y="303" text-anchor="middle" fill="#ffd9f6" font-family="monospace" font-size="10" letter-spacing="3">SLICE • SCORE • REPEAT</text>
+</svg>

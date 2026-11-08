@@ -1,0 +1,69 @@
+/* Additions for the single-screen launcher. The original cabinet styles in /styles.css are untouched. */
+
+.game-howto { max-width: 210px; margin: -2px 0 8px; font: 700 6px/1.4 'Orbitron', sans-serif; letter-spacing: .08em; color: #ffb7f1; text-shadow: 0 0 6px rgba(255,42,203,.5); }
+
+/* Game stage: fills the CRT glass, below the scanlines/sheen so the screen effects still apply on top. */
+.game-stage { position: absolute; inset: 0; z-index: 3; overflow: hidden; border-radius: inherit; animation: stageIn .3s ease-out; }
+.game-stage[hidden] { display: none; }
+.stage-loading { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px; font: 800 11px 'Orbitron', sans-serif; letter-spacing: .12em; color: #a8faff; text-shadow: 0 0 10px #00cfff; }
+.stage-loading.is-bad { color: #ff5a8a; }
+.stage-loading small { font: 600 9px 'Rajdhani', sans-serif; letter-spacing: .04em; color: #b9e9f2; }
+
+/* While a game runs, only the screen contents swap; the cabinet, joystick and button stay put. */
+.screen-glass .game-view, .screen-glass .screen-topline, .screen-glass .screen-footer { transition: opacity .25s ease; }
+.screen-glass.is-playing .game-view,
+.screen-glass.is-playing .screen-topline,
+.screen-glass.is-playing .screen-footer { opacity: 0; pointer-events: none; }
+
+/* Personal best: small trophy readout in the screen's bottom-left corner. */
+.personal-best { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; color: #ffe27a; }
+.pb-trophy { width: 11px; height: 11px; fill: none; stroke: #ffd84a; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 4px #ffb52c); flex: none; }
+.pb-label { font: 700 6px 'Orbitron', sans-serif; letter-spacing: .1em; color: #ffd84a; opacity: .9; }
+.pb-value { min-width: 12px; font: 900 9px 'Orbitron', sans-serif; letter-spacing: .04em; color: #fff; text-shadow: 0 0 8px #ffb52c; }
+.pb-value.is-new { animation: pbNew 1s ease-out; }
+
+.placeholder-game { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 12px; text-align: center; background: radial-gradient(ellipse at center, rgba(5,2,22,.55), rgba(5,2,22,.92)); }
+.ph-kicker { margin: 0; font: 700 7px 'Orbitron', sans-serif; letter-spacing: .14em; color: var(--pink); }
+.ph-title { margin: 0; font: 900 clamp(22px, 6vw, 34px)/.95 'Orbitron', sans-serif; letter-spacing: -.05em; color: #fff; text-shadow: 3px 3px 0 #102047, 0 0 14px rgba(0,226,255,.4); }
+.ph-title strong { color: var(--lime); }
+.ph-text { margin: 0; max-width: 260px; font: 600 12px/1.25 'Rajdhani', sans-serif; color: #b9e9f2; }
+.ph-btn { cursor: pointer; padding: 7px 12px; border: 1px solid #ffb0f1; border-radius: 4px; background: linear-gradient(180deg,#ff4fd8,#b0158f); color: #fff; font: 800 8px 'Orbitron', sans-serif; letter-spacing: .08em; box-shadow: 0 0 14px rgba(255,42,203,.5); }
+
+@keyframes stageIn { from { opacity: 0; transform: scale(.985); } }
+@keyframes pbNew { 0% { transform: scale(1.7); color: #caff32; } 100% { transform: scale(1); } }
+
+@media (max-width: 520px) {
+  .game-howto { font-size: 5px; margin-bottom: 6px; }
+  .pb-label { font-size: 5px; }
+  .pb-value { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-stage, .pb-value.is-new { animation: none; }
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Wide screen mode. A game that sets `screen: "wide"` in gameRegistry.js gets a much larger CRT while it
+   runs (the home screen is unchanged). The width is derived from the viewport HEIGHT so the whole cabinet
+   (screen + joystick + button) always fits on screen: width = (viewport height - everything that is not
+   the screen) * screen aspect + the horizontal frame. Tune --wide-chrome / --wide-aspect to taste.
+   --------------------------------------------------------------------------------------------- */
+.cabinet[data-screen="wide"].is-in-game {
+  --wide-aspect: 1.5;
+  --wide-chrome: 292px;   /* brand + crown + bezel + control deck + lower cabinet + page padding */
+  --wide-frame: 46px;     /* frame padding + bezel on the left and right */
+  width: min(96vw, max(340px, calc((100svh - var(--wide-chrome)) * var(--wide-aspect) + var(--wide-frame))));
+  max-width: 1280px;
+  transform: none;        /* no 3D tilt while playing: pointer positions map 1:1 onto the screen */
+}
+.cabinet[data-screen="wide"].is-in-game .screen-glass { aspect-ratio: var(--wide-aspect) / 1; }
+@media (max-width: 520px) {
+  .cabinet[data-screen="wide"].is-in-game { --wide-aspect: .92; --wide-chrome: 250px; --wide-frame: 30px; width: min(98vw, max(300px, calc((100svh - var(--wide-chrome)) * var(--wide-aspect) + var(--wide-frame)))); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cabinet[data-screen="wide"] { transition: width .35s cubic-bezier(.2,.7,.2,1), filter .25s ease; }
+}
+
+/* Performance while a wide game runs: the cabinet-wide drop-shadow filter would be re-blurred every game frame,
+   and the drifting background grid repaints constantly. Neither is visible enough to be worth the GPU time. */
+.cabinet[data-screen="wide"].is-in-game { filter: none; }
+body:has(.cabinet[data-screen="wide"].is-in-game) .grid-floor { animation-play-state: paused; }

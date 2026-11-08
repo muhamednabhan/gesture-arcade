@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#062957"/><stop offset="1" stop-color="#12d8e8"/></linearGradient>
+ <linearGradient id="pipe" x2="1"><stop stop-color="#0a5b83"/><stop offset=".3" stop-color="#23f6ff"/><stop offset=".65" stop-color="#087a9e"/><stop offset="1" stop-color="#052746"/></linearGradient>
+ <linearGradient id="bird" x2="1" y2="1"><stop stop-color="#fff8a2"/><stop offset=".45" stop-color="#ffb52c"/><stop offset="1" stop-color="#ff4e7a"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="pixels" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#78ffff" stroke-opacity=".16"/></pattern>
+</defs>
+<rect x="8" y="8" width="344" height="314" rx="14" fill="url(#sky)" stroke="#29f7ff" stroke-width="3"/>
+<rect x="8" y="8" width="344" height="314" rx="14" fill="url(#pixels)"/>
+<g fill="#b7ffff" opacity=".85"><rect x="49" y="37" width="3" height="3"/><rect x="78" y="65" width="4" height="4"/><rect x="289" y="40" width="3" height="3"/><rect x="263" y="89" width="4" height="4"/><rect x="113" y="28" width="2" height="2"/><rect x="305" y="119" width="3" height="3"/></g>
+<circle cx="273" cy="77" r="26" fill="#cafffb" opacity=".16"/><circle cx="273" cy="77" r="15" fill="#cafffb" opacity=".7"/>
+<path d="M8 245 L45 205 74 230 108 184 146 227 183 195 220 224 261 182 300 224 352 196V322H8Z" fill="#092c58" opacity=".85"/>
+<path d="M8 267L55 233 90 260 126 222 160 263 205 230 240 261 287 225 352 260V322H8Z" fill="#06406b"/>
+<!-- pipes -->
+<g filter="url(#glow)">
+ <path d="M38 8H99V103H108V129H28V103H38Z" fill="url(#pipe)" stroke="#58ffff" stroke-width="3"/>
+ <path d="M257 201H326V227H317V322H266V227H257Z" fill="url(#pipe)" stroke="#58ffff" stroke-width="3"/>
+ <path d="M36 103H101M265 227H319" stroke="#d9ffff" stroke-width="4"/>
+</g>
+<!-- bird -->
+<g transform="translate(156 153)" filter="url(#glow)">
+ <path d="M-31 -9Q-35 -33 -12 -30L11 -23Q29 -27 39 -8L32 12Q13 27 -9 15L-27 9Z" fill="url(#bird)" stroke="#fff5a8" stroke-width="3"/>
+ <path d="M-14 -1Q-31 -21 -37 -2L-29 14L-8 12Z" fill="#ff6d7e" stroke="#ffe0a2" stroke-width="2"/>
+ <circle cx="16" cy="-13" r="8" fill="#fff"/><circle cx="18" cy="-13" r="4" fill="#101b48"/><path d="M32 -3L54 4L32 9Z" fill="#ff386f" stroke="#ffe69a" stroke-width="2"/>
+ <path d="M-5 15L-9 25M7 16L11 26" stroke="#ffb52c" stroke-width="4" stroke-linecap="round"/>
+</g>
+<path d="M117 196Q155 171 193 190" fill="none" stroke="#caff32" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 7" filter="url(#glow)"/>
+<rect x="20" y="287" width="320" height="24" rx="4" fill="#06152e" opacity=".9" stroke="#28eaff"/>
+<text x="180" y="303" text-anchor="middle" fill="#caffff" font-family="monospace" font-size="10" letter-spacing="3">FLY • DODGE • SURVIVE</text>
+</svg>

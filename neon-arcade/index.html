@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080413">
+  <meta name="description" content="A neon-soaked arcade cabinet. Choose your game and press start.">
+  <title>Neon Arcade — Insert Coin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="src/styles/arcade-ui.css">
+  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/backgroundFX.js"></script>
+</head>
+<body>
+  <canvas id="arcadeBackgroundFX" class="arcade-background-fx" aria-hidden="true"></canvas>
+  <aside id="cameraPreviewDock" class="camera-preview-dock" aria-label="Live camera preview"><span class="camera-preview-label"><i></i> LIVE CAMERA</span></aside>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+  <div class="grid-floor" aria-hidden="true"></div>
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <div id="bootLoader" class="boot-loader" role="status" aria-live="polite">
+    <div class="boot-loader-mark">NA<span>+</span></div>
+    <p class="boot-loader-title">PREPARING ARCADE</p>
+    <div class="boot-loader-track"><span></span></div>
+    <p class="boot-loader-sub">LOADING GAMES · OPTIMIZING DISPLAY</p>
+  </div>
+  <div class="scroll-run">
+  <main class="stage">
+    <div class="backdrop-title" aria-hidden="true"><span>ARCADE</span><span>GAMES</span></div>
+    <div class="corner-art corner-art--left" aria-hidden="true"><img src="assets/blink-bird.svg" alt=""></div>
+    <div class="corner-art corner-art--right" aria-hidden="true"><img src="assets/fruit-ninja.svg" alt=""></div>
+    <header class="brand">
+    </header>
+
+    <div class="machine-layout">
+    <section class="cabinet" aria-label="Neon arcade cabinet">
+      <div class="cabinet-crown">
+        <div class="crown-bolt bolt-left"></div><div class="crown-bolt bolt-right"></div>
+        <div class="marquee">
+          <span class="marquee-kicker">PLAYER ONE · PLAYER TWO</span>
+          <div class="marquee-title">INSERT <em>COIN</em></div>
+          <div class="marquee-sub"><span class="marquee-line"></span> YOUR NEXT OBSESSION STARTS HERE <span class="marquee-line"></span></div>
+        </div>
+      </div>
+
+      <div class="cabinet-frame">
+        <div class="side-rail side-rail--left" aria-hidden="true"><span></span></div>
+        <div class="side-rail side-rail--right" aria-hidden="true"><span></span></div>
+
+        <div class="screen-bezel">
+          <div class="bezel-screw screw-tl"></div><div class="bezel-screw screw-tr"></div>
+          <div class="bezel-screw screw-bl"></div><div class="bezel-screw screw-br"></div>
+          <div class="screen-glass">
+            <div class="screen-sheen" aria-hidden="true"></div>
+            <div class="screen-scanlines" aria-hidden="true"></div>
+            <div class="screen-topline">
+              <span><b class="live-dot"></b> SYSTEM ONLINE</span>
+              <span class="screen-index">GAME <b id="gameIndex">01</b> / 04</span>
+            </div>
+            <div class="game-view" id="gameView" aria-live="polite">
+              <div class="game-copy">
+                <p class="game-eyebrow" id="gameEyebrow">ARCADE CLASSIC <span>✦</span> 001</p>
+                <h1 id="gameTitle">BLINK<br><strong>BIRD</strong></h1>
+                <p class="game-description" id="gameDescription">Blink to fly. Dodge the neon pipes. Beat your high score.</p>
+                <p class="game-howto" id="gameHowto">BLINK TO FLAP · SPACE / ↑ AS BACKUP</p>
+                <div class="ready-tag"><span class="ready-dot"></span><span id="gameStatus">PLAYER READY</span></div>
+              </div>
+              <div class="game-art" id="gameArt" aria-label="Blink Bird game illustration">
+                <img src="assets/blink-bird.svg" alt="Pixel bird flying between glowing neon pipes">
+              </div>
+            </div>
+            <div class="game-stage" id="gameStage" hidden></div>
+            <div class="screen-footer">
+              <div class="personal-best" title="Saved in this browser only">
+                <svg class="pb-trophy" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v5a5 5 0 0 1-10 0V3Z"/><path d="M7 5H3.5c0 3 1.5 4.6 4 5M17 5h3.5c0 3-1.5 4.6-4 5"/><path d="M12 13v4M8.5 21h7M9.5 17h5v4h-5z"/></svg>
+                <span class="pb-label">PERSONAL BEST</span><b class="pb-value" id="personalBestValue">--</b>
+              </div>
+              <span id="gameShort">BLINK BIRD</span>
+              <span class="screen-hint">← MOVE →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-deck">
+          <div class="deck-topline"><span>NEON ARCADE</span><span class="deck-status"><i></i> READY TO PLAY</span><span>V. 01.08</span></div>
+          <div class="controls">
+            <div class="joystick-area">
+              <div class="control-label">SELECT GAME <span>↔</span></div>
+              <div class="selector-controls" aria-label="Game selector">
+                <button class="selector-arrow selector-arrow--left" id="previousGame" type="button" aria-label="Previous game" title="Previous game">◀</button>
+                <div class="joystick-base">
+                  <div class="base-ring"></div>
+                  <div class="joystick-stem" id="joystickStem"></div>
+                  <button class="joystick-knob" id="joystick" aria-label="Game selector joystick. Drag left or right to change games." aria-describedby="joystickHelp">
+                    <span class="knob-highlight"></span><span class="knob-cross"></span>
+                  </button>
+                </div>
+                <button class="selector-arrow selector-arrow--right" id="nextGame" type="button" aria-label="Next game" title="Next game">▶</button>
+              </div>
+              <p class="control-help" id="joystickHelp">MOVE HANDLE OR USE ARROWS</p>
+              <div class="tutorial-bubble tutorial-bubble--joystick" id="joystickTutorial" hidden role="status"><span class="tutorial-bubble-kicker">GAME GUIDE</span><strong>Move left / right</strong><span>Use the handle or arrows to switch games. Each game has its own hands-free setup—follow the instructions on the screen.</span><small id="tutorialGameSetup">Selected game: blink to flap.</small><button type="button" class="tutorial-dismiss" id="dismissTutorial" aria-label="Dismiss tutorial">GOT IT ✕</button></div>
+            </div>
+            <div class="deck-divider" aria-hidden="true"></div>
+            <div class="start-area">
+              <div class="control-label">CONFIRM <span>↗</span></div>
+              <button class="start-button" id="startButton" aria-label="Start the selected game" title="Start selected game">
+                <span class="button-rim"><span class="button-face"><span class="button-symbol">▶</span></span></span>
+              </button>
+              <p class="control-help">PRESS TO START</p>
+            </div>
+          </div>
+          <div class="deck-bottomline"><span>▲ HIGH VOLTAGE ▲</span><span class="deck-warning">CAUTION: EXTREME FUN</span></div>
+        </div>
+      </div>
+      <div class="cabinet-lower">
+        <div class="lower-vent"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="coin-slot" id="coinSlot" aria-label="Coin slot, drop a coin here"><span class="coin-slot-light"></span><span>INSERT COIN</span><b>1</b></div>
+        <div class="lower-badge"><span class="badge-star">✦</span><span>PLAY<br>FOREVER</span></div>
+        <div class="lower-glow" aria-hidden="true"></div>
+      </div>
+      <div class="cabinet-foot cabinet-foot--left"></div><div class="cabinet-foot cabinet-foot--right"></div>
+    </section>
+    <aside class="coin-rack" aria-label="Coin stack">
+      <p class="coin-rack-label">CREDITS</p>
+      <div class="coin-stack" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <button class="coin-token" id="coinToken" type="button" draggable="true" aria-label="Drag a coin to the arcade coin slot, or press to insert it"><span>¢</span></button>
+      <p class="coin-instruction" id="coinInstruction">DRAG COIN<br>TO SLOT</p>
+      <div class="tutorial-bubble tutorial-bubble--coin" id="coinTutorial" hidden role="status"><span class="tutorial-bubble-kicker">FIRST STEP</span><strong>Insert your coin</strong><span>Drag the coin from this stack to the INSERT COIN slot. One coin unlocks the arcade for this session.</span></div>
+      <p class="coin-credit" id="coinCredit" aria-live="polite">0 / 1 CREDIT</p>
+    </aside>
+    </div>
+    </main>
+  </div>
+
+  <nav class="creator-links" aria-label="Creator links">
+    <a href="https://muhamed-nabhan.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" title="Portfolio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4V2.8h8V4M3 9h18M9 9v2h6V9"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/muhamed-nabhan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5V19M5 5.2v.1M10 19v-6.1a3 3 0 0 1 6 0V19M10 10v9M3 3h18v18H3z"/></svg>
+    </a>
+    <a href="mailto:muhamednabhan1@gmail.com" aria-label="Email" title="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+    </a>
+    <a href="https://drive.google.com/file/d/1GwRfg-8FNkmGJ2ACoJMqRs_iR7vA0tXN/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Resume" title="Resume">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 12h6M9 16h6"/></svg>
+    </a>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
