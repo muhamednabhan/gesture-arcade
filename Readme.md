@@ -13,7 +13,7 @@ Built using vanilla HTML, CSS and JavaScript, with no frameworks or build proces
 </p>
 
 <p align="center">
-  <img src="https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result2.png" width="100%" alt="Neon Arcade Gameplay">
+  <img src="[https://github.com/muhamednabhan/gesture-arcade/raw/main/assets/result2.png](https://github.com/muhamednabhan/gesture-arcade/blob/main/neon-arcade/assets/result.png)" width="100%" alt="Neon Arcade Gameplay">
 </p>
 
 ## Games
